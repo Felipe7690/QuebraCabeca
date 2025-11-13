@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quebra-Cabeça do Saber</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="game-title">Quebra-Cabeça do Saber: Desvendando Vozes Negras</h1>
+    <div class="game-controls"><button class="start-btn" id="start-btn">Iniciar Jogo</button>
+    </div>
+    <div class="timer" id="timer">
+      Tempo: 30s
+    </div>
+    <div class="game-area" id="game-area" style="display: none;">
+      <div class="puzzle-board" id="puzzle-board"></div>
+      <div class="pieces-area">
+        <div class="pieces-title">
+          Peças Embaralhadas
+        </div>
+        <div class="pieces-container" id="pieces-container"></div>
+        <div class="pieces-count" id="pieces-count">
+          Peças montadas: 0/16
+        </div>
+      </div>
+    </div><img class="complete-image" id="complete-image" alt="Imagem completa">
+    <div class="feedback" id="feedback"></div>
+  </div>
+  
+  <div class="modal" id="question-modal">
+    <div class="modal-content">
+      <h2>Quem é esta personalidade?</h2>
+      
+      <p class="hint-text" id="hint-text">Dica: ...</p>
+      
+      <input type="text" id="answer-input" placeholder="Digite o nome da personalidade..." maxlength="100"> <br>
+      <button class="confirm-btn" id="confirm-btn">Confirmar</button>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
