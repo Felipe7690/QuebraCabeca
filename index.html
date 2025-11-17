@@ -3,43 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quebra-Cabeça do Saber</title>
+  <title>Lendas da História: Quebra-Cabeça</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1 id="game-title">Quebra-Cabeça do Saber: Desvendando Vozes Negras</h1>
-    <div class="game-controls"><button class="start-btn" id="start-btn">Iniciar Jogo</button>
-    </div>
-    <div class="timer" id="timer">
-      Tempo: 30s
-    </div>
-    <div class="game-area" id="game-area" style="display: none;">
-      <div class="puzzle-board" id="puzzle-board"></div>
-      <div class="pieces-area">
-        <div class="pieces-title">
-          Peças Embaralhadas
+
+  <audio id="bg-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="main-container">
+    
+    <section id="home-screen" class="screen active">
+      <div class="content-box">
+        <h1 class="game-title">Lendas da História</h1>
+        <div class="info-panel">
+          <h3>Objetivo</h3>
+          <p>Reconstrua a imagem de uma grande personalidade negra da história.</p>
+          <h3>Regras</h3>
+          <ul class="rules-list">
+            <li>Complete o quebra-cabeça antes do tempo acabar.</li>
+            <li>Ao final, acerte o nome da personalidade para vencer.</li>
+            <li><strong>Cuidado:</strong> Se errar a pergunta, você perde uma peça!</li>
+          </ul>
         </div>
-        <div class="pieces-container" id="pieces-container"></div>
-        <div class="pieces-count" id="pieces-count">
-          Peças montadas: 0/16
+        <button class="btn-primary" id="btn-start">Iniciar Jornada</button>
+      </div>
+    </section>
+
+    <section id="game-screen" class="screen">
+      <header class="game-header">
+        <div class="timer-box" id="timer-display">01:00</div>
+        <div class="controls">
+          <button id="btn-music" class="btn-icon">🎵</button>
+          <button id="btn-remove-mode" class="btn-secondary">🗑️ Remover Peça</button>
+        </div>
+      </header>
+
+      <div class="game-layout">
+        <div class="board-container">
+          <div id="puzzle-board" class="puzzle-board"></div>
+        </div>
+
+        <div class="pieces-panel">
+          <h3>Peças Disponíveis</h3>
+          <div id="pieces-container" class="pieces-container"></div>
+          <div class="pieces-status">Montadas: <span id="score-count">0</span>/16</div>
         </div>
       </div>
-    </div><img class="complete-image" id="complete-image" alt="Imagem completa">
-    <div class="feedback" id="feedback"></div>
+
+      <div id="quiz-modal" class="modal">
+        <div class="modal-content">
+          <h2 id="quiz-title">Quem é esta Lenda?</h2>
+          <p class="context-text" id="quiz-context">Dica...</p>
+          <div id="quiz-options" class="options-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="victory-screen" class="screen">
+      <div class="content-box victory-box">
+        <h1 class="victory-title" id="result-title">História Revelada!</h1>
+        
+        <div class="victory-image-wrapper">
+          <img id="final-image" src="" alt="Personalidade">
+        </div>
+        
+        <h2 id="victory-name">Nome da Personalidade</h2>
+        <p id="victory-bio" class="bio-text">Biografia...</p>
+        
+        <div class="victory-actions">
+          <button class="btn-secondary" onclick="location.reload()">Menu Inicial</button>
+          <button class="btn-primary" id="btn-replay-win">Jogar Novamente</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="game-over-screen" class="screen">
+      <div class="content-box fail-box">
+        <h1 class="fail-title">O Tempo Esgotou!</h1>
+        <p style="margin-bottom: 20px;">A história não pôde ser completada a tempo.</p>
+        
+        <div class="victory-actions" style="flex-wrap: wrap;">
+          <button class="btn-secondary" id="btn-reveal-fail" style="width: 100%; margin-bottom: 10px; border-color: var(--primary);">👁️ Ver Quem Era</button>
+          
+          <button class="btn-secondary" onclick="location.reload()">Menu</button>
+          <button class="btn-primary" id="btn-replay-fail">Tentar Novamente</button>
+        </div>
+      </div>
+    </section>
+
   </div>
-  
-  <div class="modal" id="question-modal">
-    <div class="modal-content">
-      <h2>Quem é esta personalidade?</h2>
-      
-      <p class="hint-text" id="hint-text">Dica: ...</p>
-      
-      <input type="text" id="answer-input" placeholder="Digite o nome da personalidade..." maxlength="100"> <br>
-      <button class="confirm-btn" id="confirm-btn">Confirmar</button>
-    </div>
-  </div>
-  
+
   <script src="script.js"></script>
 </body>
 </html>
