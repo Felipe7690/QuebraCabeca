@@ -1,166 +1,270 @@
-const config = {
-  timerStart: 90,
-  penaltyTime: 15,
-};
 
 const personalities = [
   {
     nome: "Abdias do Nascimento",
     bio: "Ativista, artista e político. Fundador do Teatro Experimental do Negro.",
     dica: "Foi um grande defensor dos direitos civis e senador.",
-    imagem: "imagens/abdias-do-nascimento.jpg"
+    imagem: "imagens/abdias-do-nascimento.jpg",
+    fatos: [
+      "Indicado ao Prêmio Nobel da Paz em 2010.",
+      "Fundou o Teatro Experimental do Negro (TEN) em 1944.",
+      "Foi professor universitário nos Estados Unidos e Nigéria.",
+      "Um dos ícones do Pan-Africanismo no Brasil.",
+      "Foi deputado federal e senador da República."
+    ]
   },
   {
     nome: "Aleijadinho",
     bio: "Antônio Francisco Lisboa, o maior escultor do barroco brasileiro.",
     dica: "Esculpia em pedra-sabão mesmo com limitações físicas.",
-    imagem: "imagens/aleijadinho.jpg"
+    imagem: "imagens/aleijadinho.jpg",
+    fatos: [
+      "Perdeu os dedos das mãos devido a uma doença degenerativa.",
+      "Seus discípulos amarravam as ferramentas aos seus punhos para ele esculpir.",
+      "Suas obras mais famosas são os 12 Profetas em Congonhas.",
+      "Trabalhava principalmente com pedra-sabão e madeira.",
+      "É considerado o maior artista colonial do Brasil."
+    ]
   },
   {
     nome: "Antonieta de Barros",
     bio: "Jornalista e professora. Primeira deputada estadual negra do Brasil.",
     dica: "Lutou pela educação e pelos direitos das mulheres.",
-    imagem: "imagens/antonieta-barros.jpg"
+    imagem: "imagens/antonieta-barros.jpg",
+    fatos: [
+      "Foi a primeira mulher negra a ser eleita deputada no Brasil (1934).",
+      "Criou o Dia do Professor em Santa Catarina (antes de virar nacional).",
+      "Fundou o jornal 'A Semana' para debater política e educação.",
+      "Lutou intensamente pelo voto feminino.",
+      "Era filha de uma ex-escravizada."
+    ]
   },
   {
     nome: "Barack Obama",
     bio: "44º presidente dos Estados Unidos, o primeiro negro a ocupar o cargo.",
     dica: "Ganhou o Prêmio Nobel da Paz em 2009.",
-    imagem: "imagens/barack-obama.jpg"
+    imagem: "imagens/barack-obama.jpg",
+    fatos: [
+      "Foi o 44º presidente dos Estados Unidos.",
+      "Ganhou o Prêmio Nobel da Paz em 2009.",
+      "Formou-se em Direito pela Universidade de Harvard.",
+      "Autor de best-sellers como 'Minha História'.",
+      "Implementou o programa de saúde conhecido como 'Obamacare'."
+    ]
   },
   {
     nome: "Carolina Maria de Jesus",
     bio: "Escritora brasileira famosa por relatar sua vida na favela em diários.",
     dica: "Autora do best-seller 'Quarto de Despejo'.",
-    imagem: "imagens/carolina-maria-de-jesus.jpg"
+    imagem: "imagens/carolina-maria-de-jesus.jpg",
+    fatos: [
+      "Seu livro 'Quarto de Despejo' foi traduzido para 13 idiomas.",
+      "Era catadora de papel antes de ser descoberta.",
+      "Escreveu também romances, contos e poemas.",
+      "Vendeu mais de 100 mil cópias na semana de lançamento.",
+      "Sua escrita é marcada pela realidade crua da fome."
+    ]
   },
   {
     nome: "Conceição Evaristo",
     bio: "Escritora contemporânea, cunhou o termo 'escrevivência'.",
     dica: "Autora de 'Ponciá Vicêncio'.",
-    imagem: "imagens/conceicao-evaristo.jpg"
+    imagem: "imagens/conceicao-evaristo.jpg",
+    fatos: [
+      "Cunhou o conceito de 'Escrevivência' (escrita + vida).",
+      "Venceu o Prêmio Jabuti de Literatura.",
+      "Trabalhou como empregada doméstica para custear os estudos.",
+      "É Doutora em Literatura Comparada.",
+      "Sua obra foca na memória e condição da mulher negra."
+    ]
   },
   {
     nome: "Dandara dos Palmares",
     bio: "Guerreira e líder quilombola, lutou capoeira e liderou exércitos.",
     dica: "Companheira de Zumbi na luta de Palmares.",
-    imagem: "imagens/dandara.jpg"
+    imagem: "imagens/dandara.jpg",
+    fatos: [
+      "Liderou exércitos femininos e masculinos em Palmares.",
+      "Era estrategista militar e dominava a capoeira.",
+      "Preferiu a morte à escravidão ao ser capturada.",
+      "Esposa de Zumbi dos Palmares e mãe de três filhos.",
+      "Símbolo da resistência negra feminina no Brasil."
+    ]
   },
   {
     nome: "Lélia Gonzalez",
     bio: "Filósofa e antropóloga, pioneira no feminismo negro no Brasil.",
     dica: "Criou o conceito de 'Amefricanidade'.",
-    imagem: "imagens/lelia-gonzalez.jpg"
+    imagem: "imagens/lelia-gonzalez.jpg",
+    fatos: [
+      "Introduziu o conceito de 'Amefricanidade'.",
+      "Fundadora do Movimento Negro Unificado (MNU).",
+      "Criticava o mito da democracia racial no Brasil.",
+      "Foi professora na PUC-Rio e tradutora.",
+      "Uma das intelectuais brasileiras mais citadas no exterior."
+    ]
   },
   {
     nome: "Luiz Gama",
     bio: "Advogado autodidata que libertou mais de 500 escravizados.",
     dica: "Patrono da Abolição da Escravidão no Brasil.",
-    imagem: "imagens/luiz-gama.jpg"
+    imagem: "imagens/luiz-gama.jpg",
+    fatos: [
+      "Libertou mais de 500 escravizados nos tribunais.",
+      "Aprendeu a ler sozinho aos 17 anos.",
+      "Foi vendido como escravo pelo próprio pai aos 10 anos.",
+      "É o Patrono da Abolição da Escravidão no Brasil.",
+      "Foi jornalista e poeta satírico."
+    ]
   },
   {
     nome: "Machado de Assis",
     bio: "Um dos maiores escritores do mundo e fundador da ABL.",
     dica: "Escreveu 'Dom Casmurro' e 'Memórias Póstumas'.",
-    imagem: "imagens/machado-de-assis.jpg"
+    imagem: "imagens/machado-de-assis.jpg",
+    fatos: [
+      "Fundou e foi o primeiro presidente da Academia Brasileira de Letras.",
+      "Neto de escravos alforriados, nasceu no Morro do Livramento.",
+      "Escreveu clássicos como 'Dom Casmurro' e 'Memórias Póstumas'.",
+      "Era epilético e gago, superando grandes preconceitos.",
+      "Muitas fotos suas foram embranquecidas historicamente."
+    ]
   },
   {
     nome: "Martin Luther King Jr.",
     bio: "Líder do movimento pelos direitos civis nos EUA.",
     dica: "Famoso pelo discurso 'Eu Tenho um Sonho'.",
-    imagem: "imagens/martin-luther-king.jpg"
+    imagem: "imagens/martin-luther-king.jpg",
+    fatos: [
+      "Fez o famoso discurso 'I Have a Dream' em Washington.",
+      "Prêmio Nobel da Paz em 1964.",
+      "Defendia a resistência não-violenta e desobediência civil.",
+      "Foi assassinado em 1968 em Memphis.",
+      "Seu dia é feriado nacional nos Estados Unidos."
+    ]
   },
   {
     nome: "Milton Santos",
     bio: "Geógrafo renomado mundialmente, vencedor do prêmio Vautrin Lud.",
     dica: "Referência no estudo da globalização.",
-    imagem: "imagens/milton-santos.jpg"
+    imagem: "imagens/milton-santos.jpg",
+    fatos: [
+      "Ganhou o Vautrin Lud, considerado o 'Nobel da Geografia'.",
+      "Escreveu 'Por uma outra globalização'.",
+      "Foi preso e exilado durante a Ditadura Militar.",
+      "Lecionou em universidades na Europa, África e Américas.",
+      "Criticava a globalização perversa que aumenta desigualdades."
+    ]
   },
   {
     nome: "Pixinguinha",
     bio: "Maestro e compositor, um dos pais da música popular brasileira.",
     dica: "Gênio do Choro, tocava flauta e saxofone.",
-    imagem: "imagens/pixinguinha.jpg"
+    imagem: "imagens/pixinguinha.jpg",
+    fatos: [
+      "Considerado um dos pais da Música Popular Brasileira (MPB).",
+      "Compôs 'Carinhoso', uma das músicas mais famosas do Brasil.",
+      "Era virtuoso na flauta e no saxofone.",
+      "Integrou o grupo 'Os Oito Batutas', sucesso em Paris.",
+      "Seu aniversário, 23 de abril, é o Dia Nacional do Choro."
+    ]
   }
 ];
 
 let state = {
-  screen: 'home',
   personality: null,
   pieces: [],
-  board: Array(16).fill(null),
-  placedCount: 0,
-  timeLeft: 0,
+  boardSlots: Array(16).fill(null),
+  timer: 90,
   timerInterval: null,
   removeMode: false,
+  selectedPieceId: null,
   isPlaying: false,
-  audioPlaying: false
+  musicPlaying: false
 };
 
-const screens = {
-  home: document.getElementById('home-screen'),
-  game: document.getElementById('game-screen'),
-  victory: document.getElementById('victory-screen'),
-  fail: document.getElementById('game-over-screen')
-};
 const els = {
+  screens: {
+    home: document.getElementById('home-screen'),
+    game: document.getElementById('game-screen'),
+    victory: document.getElementById('victory-screen'),
+    fail: document.getElementById('fail-screen')
+  },
   board: document.getElementById('puzzle-board'),
-  pieces: document.getElementById('pieces-container'),
+  piecesContainer: document.getElementById('pieces-container'),
   timer: document.getElementById('timer-display'),
-  score: document.getElementById('score-count'),
+  placedCount: document.getElementById('placed-count'),
   modal: document.getElementById('quiz-modal'),
-  options: document.getElementById('quiz-options'),
-  finalImg: document.getElementById('final-image'),
-  finalName: document.getElementById('victory-name'),
-  finalBio: document.getElementById('victory-bio'),
-  bgMusic: document.getElementById('bg-music'),
-  removeBtn: document.getElementById('btn-remove-mode'),
-  // NOVO ELEMENTO:
-  resultTitle: document.getElementById('result-title'),
-  revealBtn: document.getElementById('btn-reveal-fail')
+  quizTitle: document.getElementById('quiz-title'),
+  quizHint: document.getElementById('quiz-hint'),
+  quizOptions: document.getElementById('quiz-options'),
+  btnRemove: document.getElementById('btn-remove'),
+  audio: document.getElementById('bg-music'),
+  endTitle: document.getElementById('end-title'),
+  endImg: document.getElementById('final-image'),
+  endName: document.getElementById('final-name'),
+  endBio: document.getElementById('final-bio'),
+  factBox: document.getElementById('fact-display'),
+  factText: document.getElementById('fact-text')
 };
 
-document.getElementById('btn-start').addEventListener('click', () => switchScreen('game'));
-document.getElementById('btn-replay-win').addEventListener('click', () => switchScreen('game'));
-document.getElementById('btn-replay-fail').addEventListener('click', () => switchScreen('game'));
-document.getElementById('btn-music').addEventListener('click', toggleMusic);
-els.removeBtn.addEventListener('click', toggleRemoveMode);
-// NOVO LISTENER
-els.revealBtn.addEventListener('click', showReveal);
+function init() {
+  document.getElementById('btn-start').onclick = () => goToScreen('game');
+  document.getElementById('btn-replay').onclick = () => goToScreen('game');
+  document.getElementById('btn-retry').onclick = () => goToScreen('game');
+  document.getElementById('btn-reveal').onclick = showReveal;
+  document.getElementById('btn-music').onclick = toggleMusic;
+  els.btnRemove.onclick = toggleRemoveMode;
+  
+  checkMobileSize();
+  window.onresize = () => {
+    checkMobileSize();
+    if(state.isPlaying) renderAll();
+  };
+}
+init();
 
-function switchScreen(screenName) {
-  Object.values(screens).forEach(s => s.classList.remove('active'));
-  screens[screenName].classList.add('active');
-  state.screen = screenName;
-  if (screenName === 'game') startGame();
+function goToScreen(screen) {
+  Object.values(els.screens).forEach(s => s.classList.remove('active'));
+  els.screens[screen].classList.add('active');
+  if(screen === 'game') startGame();
   else stopGame();
 }
 
+function checkMobileSize() {
+  const r = document.documentElement;
+  if(window.innerWidth <= 600) {
+    r.style.setProperty('--s', '70px');
+    r.style.setProperty('--r', '18px');
+  } else {
+    r.style.setProperty('--s', '90px');
+    r.style.setProperty('--r', '22px');
+  }
+}
+
 function startGame() {
-  state.isPlaying = true;
-  state.placedCount = 0;
-  state.board = Array(16).fill(null);
-  state.timeLeft = config.timerStart;
+  state.boardSlots = Array(16).fill(null);
+  state.timer = 90;
   state.removeMode = false;
-  els.removeBtn.classList.remove('active-mode');
+  state.selectedPieceId = null;
+  state.isPlaying = true;
+  els.btnRemove.classList.remove('btn-remove-active');
+  els.btnRemove.innerText = "🗑️ Remover";
   els.modal.classList.remove('active');
+  
+  els.factText.innerText = "Encaixe uma peça para descobrir um fato histórico...";
   
   state.personality = personalities[Math.floor(Math.random() * personalities.length)];
   
   els.board.innerHTML = '';
-  els.pieces.innerHTML = '';
+  els.piecesContainer.innerHTML = '';
   updateTimerDisplay();
-  
+
   const img = new Image();
   img.src = state.personality.imagem;
   
-  img.onload = () => {
-    initPuzzle(img.src);
-    startTimer();
-  };
-  img.onerror = () => {
-    alert(`Erro ao carregar a imagem: ${state.personality.imagem}`);
-  };
+  img.onload = () => { generatePiecesData(img.src); renderAll(); startTimer(); };
+  img.onerror = () => { generatePiecesData(null); renderAll(); startTimer(); };
 }
 
 function stopGame() {
@@ -168,358 +272,312 @@ function stopGame() {
   clearInterval(state.timerInterval);
 }
 
-function initPuzzle(imgSrc) {
-  const rows = 4, cols = 4;
-  const pieces = [];
-  const shapes = []; 
+function generatePiecesData(imgSrc) {
+  state.pieces = [];
+  const shapes = [];
   
-  for(let r=0; r<rows; r++) {
-    for(let c=0; c<cols; c++) {
+  for(let r=0; r<4; r++) {
+    for(let c=0; c<4; c++) {
       let shape = { top: 0, right: 0, bottom: 0, left: 0 };
-      if(r > 0) shape.top = -shapes[(r-1)*cols + c].bottom;
-      if(c < cols-1) shape.right = Math.random() > 0.5 ? 1 : -1;
-      if(r < rows-1) shape.bottom = Math.random() > 0.5 ? 1 : -1;
-      if(c > 0) shape.left = -shapes[r*cols + (c-1)].right;
+      if(r > 0) shape.top = -shapes[(r-1)*4 + c].bottom;
+      if(c < 3) shape.right = Math.random() > 0.5 ? 1 : -1;
+      if(r < 3) shape.bottom = Math.random() > 0.5 ? 1 : -1;
+      if(c > 0) shape.left = -shapes[r*4 + (c-1)].right;
       shapes.push(shape);
-      pieces.push({ id: r*cols + c, r, c, shape, imgSrc, placed: false });
+      
+      state.pieces.push({ id: r*4 + c, r, c, shape, imgSrc });
     }
   }
   
-  state.pieces = pieces;
+  // Ajuda inicial
+  const starter = Math.floor(Math.random() * 16);
+  state.boardSlots[starter] = starter;
+  updateFact();
+}
+
+function updateFact() {
+  const facts = state.personality.fatos;
+  const randomFact = facts[Math.floor(Math.random() * facts.length)];
+  els.factText.innerText = randomFact;
+  els.factBox.classList.remove('fact-animation');
+  void els.factBox.offsetWidth;
+  els.factBox.classList.add('fact-animation');
+}
+
+
+function renderAll() {
+  els.board.innerHTML = '';
+  els.piecesContainer.innerHTML = '';
   
-  pieces.forEach((p, i) => {
+  for(let i=0; i<16; i++) {
     const slot = document.createElement('div');
     slot.className = 'puzzle-slot';
     slot.dataset.index = i;
     
-    const shapeDiv = document.createElement('div');
-    shapeDiv.className = 'puzzle-slot-shape';
-    const maskStyle = generateMask(p.shape);
-    shapeDiv.style.setProperty('--mask', maskStyle);
-    shapeDiv.style.webkitMaskImage = maskStyle;
-    shapeDiv.style.maskImage = maskStyle;
+    slot.onclick = () => handleSlotClick(i);
+    slot.ondragover = (e) => e.preventDefault();
+    slot.ondrop = (e) => handleDrop(e, i);
     
-    slot.appendChild(shapeDiv);
-    slot.addEventListener('dragover', e => e.preventDefault());
-    slot.addEventListener('drop', handleDrop);
-    slot.addEventListener('click', handleSlotClick);
+    const pieceId = state.boardSlots[i];
+    
+    if(pieceId !== null) {
+      const pieceEl = createPieceElement(pieceId);
+      pieceEl.classList.add('placed');
+      pieceEl.onclick = (e) => {
+        e.stopPropagation();
+        if(state.removeMode) {
+          state.boardSlots[i] = null;
+          renderAll();
+          toggleRemoveMode();
+        }
+      };
+      slot.appendChild(pieceEl);
+    } else {
+      const targetPiece = state.pieces[i];
+      const ghost = document.createElement('div');
+      ghost.className = 'slot-ghost';
+      const svgUrl = getSvgMask(targetPiece.shape);
+      ghost.style.setProperty('--mask', `url('${svgUrl}')`);
+      slot.appendChild(ghost);
+    }
     els.board.appendChild(slot);
+  }
+  
+  const availablePieces = state.pieces.filter(p => !state.boardSlots.includes(p.id));
+  availablePieces.forEach(p => {
+    const pieceEl = createPieceElement(p.id);
+    pieceEl.onclick = (e) => {
+      e.stopPropagation();
+      if(!state.removeMode) selectPiece(p.id);
+    };
+    els.piecesContainer.appendChild(pieceEl);
   });
   
-  const shuffled = [...pieces].sort(() => Math.random() - 0.5);
-  shuffled.forEach(p => {
-    const el = createPieceElement(p);
-    els.pieces.appendChild(el);
-  });
+  const count = state.boardSlots.filter(x => x !== null).length;
+  els.placedCount.innerText = count;
   
-  const starter = shuffled[0];
-  renderPieceInSlot(starter.id, starter.id);
+  if(count === 16 && state.isPlaying && !els.modal.classList.contains('active')) {
+    checkWinCondition();
+  }
 }
 
-function createPieceElement(pieceData) {
+function createPieceElement(id) {
+  const data = state.pieces.find(p => p.id === id);
   const el = document.createElement('div');
   el.className = 'puzzle-piece';
-  el.draggable = true;
-  el.dataset.id = pieceData.id;
+  if(state.selectedPieceId === id) el.classList.add('selected');
   
-  if(pieceData.imgSrc) {
-    el.style.backgroundImage = `url(${pieceData.imgSrc})`;
-    el.style.backgroundSize = '360px 360px';
-    el.style.backgroundPosition = `${-(pieceData.c * 90)}px ${-(pieceData.r * 90)}px`;
+  const s = window.innerWidth <= 600 ? 70 : 90;
+  const r = window.innerWidth <= 600 ? 18 : 22;
+
+  if(data.imgSrc) {
+    el.style.backgroundImage = `url(${data.imgSrc})`;
+    el.style.backgroundSize = '360px 360px'; 
+    if(window.innerWidth <= 600) el.style.backgroundSize = '280px 280px';
+    el.style.backgroundPosition = `${-(data.c * s) + r}px ${-(data.r * s) + r}px`;
+  } else {
+    el.innerText = id + 1;
+    el.style.display = "flex"; el.style.justifyContent = "center"; el.style.alignItems = "center";
+    el.style.color = "rgba(255,255,255,0.5)"; el.style.fontSize = "20px";
   }
-
-  const maskStyle = generateMask(pieceData.shape);
-  el.style.setProperty('--mask', maskStyle);
-
-  el.addEventListener('dragstart', handleDragStart);
-  el.addEventListener('click', handlePieceClick);
-
+  
+  const svgUrl = getSvgMask(data.shape);
+  el.style.setProperty('--mask', `url('${svgUrl}')`);
+  
+  el.draggable = true;
+  el.ondragstart = (e) => {
+    e.dataTransfer.setData('text', id);
+    selectPiece(id);
+  };
+  
   return el;
 }
 
-function generateMask(shape) {
-  const s = 90, tab = 18;
-  const black = '#000', transp = '#0000';
-  let masks = [`linear-gradient(${black},${black}) center/${s-2*tab}px ${s-2*tab}px no-repeat`];
+function getSvgMask(shape) {
+  const s = 100; 
+  const t = 26; 
+  let path = `M 0 0`; 
   
-  if(shape.top === 1) masks.push(`radial-gradient(circle at center bottom, ${black} 70%, ${transp} 71%) top center / ${tab*2}px ${tab}px no-repeat`);
-  else if(shape.top === -1) masks.push(`radial-gradient(circle at center top, ${transp} 70%, ${black} 71%) top center / 100% ${tab}px no-repeat`);
-  else masks.push(`linear-gradient(${black},${black}) top center / 100% ${tab}px no-repeat`);
+  if(shape.top === 1) path += ` H 35 C 35 -${t}, 65 -${t}, 65 0 H 100`;
+  else if(shape.top === -1) path += ` H 35 C 35 ${t}, 65 ${t}, 65 0 H 100`;
+  else path += ` H 100`;
   
-  if(shape.right === 1) masks.push(`radial-gradient(circle at left center, ${black} 70%, ${transp} 71%) right center / ${tab}px ${tab*2}px no-repeat`);
-  else if(shape.right === -1) masks.push(`radial-gradient(circle at right center, ${transp} 70%, ${black} 71%) right center / ${tab}px 100% no-repeat`);
-  else masks.push(`linear-gradient(${black},${black}) right center / ${tab}px 100% no-repeat`);
+  if(shape.right === 1) path += ` V 35 C ${100+t} 35, ${100+t} 65, 100 65 V 100`;
+  else if(shape.right === -1) path += ` V 35 C ${100-t} 35, ${100-t} 65, 100 65 V 100`;
+  else path += ` V 100`;
   
-  if(shape.bottom === 1) masks.push(`radial-gradient(circle at center top, ${black} 70%, ${transp} 71%) bottom center / ${tab*2}px ${tab}px no-repeat`);
-  else if(shape.bottom === -1) masks.push(`radial-gradient(circle at center bottom, ${transp} 70%, ${black} 71%) bottom center / 100% ${tab}px no-repeat`);
-  else masks.push(`linear-gradient(${black},${black}) bottom center / 100% ${tab}px no-repeat`);
-
-  if(shape.left === 1) masks.push(`radial-gradient(circle at right center, ${black} 70%, ${transp} 71%) left center / ${tab}px ${tab*2}px no-repeat`);
-  else if(shape.left === -1) masks.push(`radial-gradient(circle at left center, ${transp} 70%, ${black} 71%) left center / ${tab}px 100% no-repeat`);
-  else masks.push(`linear-gradient(${black},${black}) left center / ${tab}px 100% no-repeat`);
-
-  return masks.join(',');
+  if(shape.bottom === 1) path += ` H 65 C 65 ${100+t}, 35 ${100+t}, 35 100 H 0`;
+  else if(shape.bottom === -1) path += ` H 65 C 65 ${100-t}, 35 ${100-t}, 35 100 H 0`;
+  else path += ` H 0`;
+  
+  if(shape.left === 1) path += ` V 65 C -${t} 65, -${t} 35, 0 35 V 0`;
+  else if(shape.left === -1) path += ` V 65 C ${t} 65, ${t} 35, 0 35 V 0`;
+  else path += ` V 0`;
+  
+  path += ` Z`;
+  const vbStart = -t; const vbSize = s + 2*t;
+  const svg = `<svg viewBox="${vbStart} ${vbStart} ${vbSize} ${vbSize}" xmlns="http://www.w3.org/2000/svg"><path d="${path}" fill="black"/></svg>`;
+  return "data:image/svg+xml;base64," + btoa(svg);
 }
 
-let selectedPieceId = null;
-
-function handleDragStart(e) {
-  e.dataTransfer.setData('text/plain', e.target.dataset.id);
-  selectedPieceId = parseInt(e.target.dataset.id);
+function selectPiece(id) {
+  state.selectedPieceId = (state.selectedPieceId === id) ? null : id;
+  renderAll();
 }
 
-function handleDrop(e) {
+function handleSlotClick(idx) {
+  if(state.removeMode) return;
+  if(state.selectedPieceId !== null) movePieceToSlot(state.selectedPieceId, idx);
+}
+
+function handleDrop(e, idx) {
   e.preventDefault();
-  const slotIndex = parseInt(e.currentTarget.dataset.index);
-  const pieceId = parseInt(e.dataTransfer.getData('text/plain'));
-  executeMove(pieceId, slotIndex);
+  const id = parseInt(e.dataTransfer.getData('text'));
+  if(!isNaN(id)) movePieceToSlot(id, idx);
 }
 
-function handlePieceClick(e) {
-  if (state.removeMode) {
-    const pieceId = parseInt(e.currentTarget.dataset.id);
-    if (state.board.includes(pieceId)) {
-      e.stopPropagation();
-      removePieceFromBoard(pieceId);
-      toggleRemoveMode();
+
+function movePieceToSlot(pieceId, targetIdx) {
+
+  if (pieceId !== targetIdx) {
+    const selectedEl = document.querySelector('.puzzle-piece.selected');
+    if(selectedEl) {
+      selectedEl.classList.add('shake-wrong');
+      setTimeout(() => selectedEl.classList.remove('shake-wrong'), 400);
     }
+    state.selectedPieceId = null;
+    renderAll();
     return;
   }
-  const els = document.querySelectorAll('.puzzle-piece');
-  els.forEach(p => p.classList.remove('selected-highlight'));
-  e.currentTarget.classList.add('selected-highlight');
-  selectedPieceId = parseInt(e.currentTarget.dataset.id);
-}
 
-function handleSlotClick(e) {
-  const slotIndex = parseInt(e.currentTarget.dataset.index);
-  if (state.removeMode) {
-    if (state.board[slotIndex] !== null) {
-      removePieceFromBoard(state.board[slotIndex]);
-      toggleRemoveMode();
-    }
-    return;
-  }
-  if (selectedPieceId !== null) {
-    executeMove(selectedPieceId, slotIndex);
-    selectedPieceId = null;
-    document.querySelectorAll('.puzzle-piece').forEach(p => p.classList.remove('selected-highlight'));
-  }
-}
-
-function executeMove(pieceId, targetSlotIndex) {
-  const sourceSlotIndex = state.board.indexOf(pieceId);
-  const targetPieceId = state.board[targetSlotIndex];
-
-  if (sourceSlotIndex === targetSlotIndex) return;
-
-  if (sourceSlotIndex === -1) {
-      if (targetPieceId === null) {
-          renderPieceInSlot(pieceId, targetSlotIndex);
-      } else {
-          removePieceFromBoard(targetPieceId);
-          renderPieceInSlot(pieceId, targetSlotIndex);
-      }
-  } else {
-      if (targetPieceId === null) {
-          clearSlot(sourceSlotIndex);
-          state.board[sourceSlotIndex] = null;
-          renderPieceInSlot(pieceId, targetSlotIndex);
-      } else {
-          clearSlot(sourceSlotIndex);
-          clearSlot(targetSlotIndex);
-          state.board[sourceSlotIndex] = null;
-          state.board[targetSlotIndex] = null;
-          renderPieceInSlot(targetPieceId, sourceSlotIndex);
-          renderPieceInSlot(pieceId, targetSlotIndex);
-      }
-  }
-  checkWinCondition();
-}
-
-function renderPieceInSlot(pieceId, slotIndex) {
-  const piece = state.pieces.find(p => p.id === pieceId);
-  const slot = els.board.children[slotIndex];
+  const currentIndex = state.boardSlots.indexOf(pieceId);
+  if(currentIndex !== -1) state.boardSlots[currentIndex] = null;
   
-  const existingEls = document.querySelectorAll(`.puzzle-piece[data-id="${pieceId}"]`);
-  existingEls.forEach(el => el.remove());
-  
-  const placedEl = createPieceElement(piece);
-  placedEl.classList.add('placed');
-  placedEl.addEventListener('click', (e) => {
-    if(state.removeMode) {
-        e.stopPropagation();
-        removePieceFromBoard(pieceId);
-        toggleRemoveMode();
-    }
-  });
-
-  slot.innerHTML = '';
-  slot.appendChild(placedEl);
-  
-  const shapeDiv = document.createElement('div');
-  shapeDiv.className = 'puzzle-slot-shape';
-  shapeDiv.style.display = 'none';
-  const maskStyle = generateMask(piece.shape);
-  shapeDiv.style.setProperty('--mask', maskStyle);
-  slot.appendChild(shapeDiv);
-
-  state.board[slotIndex] = pieceId;
-  piece.placed = true;
-  updateScore();
-}
-
-function removePieceFromBoard(pieceId) {
-  const piece = state.pieces.find(p => p.id === pieceId);
-  const slotIndex = state.board.indexOf(pieceId);
-  
-  if (slotIndex > -1) {
-      state.board[slotIndex] = null;
-      piece.placed = false;
-      clearSlot(slotIndex);
-      const el = createPieceElement(piece);
-      els.pieces.appendChild(el);
-      updateScore();
-  }
-}
-
-function clearSlot(slotIndex) {
-    const slot = els.board.children[slotIndex];
-    slot.innerHTML = '';
-    const correctPiece = state.pieces.find(p => p.id === slotIndex); 
-    const shapeDiv = document.createElement('div');
-    shapeDiv.className = 'puzzle-slot-shape';
-    const maskStyle = generateMask(correctPiece.shape);
-    shapeDiv.style.setProperty('--mask', maskStyle);
-    shapeDiv.style.webkitMaskImage = maskStyle;
-    shapeDiv.style.maskImage = maskStyle;
-    slot.appendChild(shapeDiv);
-}
-
-function updateScore() {
-    state.placedCount = state.board.filter(x => x !== null).length;
-    els.score.textContent = state.placedCount;
+  state.boardSlots[targetIdx] = pieceId;
+  state.selectedPieceId = null;
+  updateFact(); // Mostra fato novo
+  renderAll();
 }
 
 function toggleRemoveMode() {
   state.removeMode = !state.removeMode;
   if(state.removeMode) {
-    els.removeBtn.classList.add('active-mode');
-    els.removeBtn.innerHTML = "CANCELAR";
-    document.body.style.cursor = "crosshair";
+    els.btnRemove.classList.add('btn-remove-active');
+    els.btnRemove.innerText = "Cancelar";
   } else {
-    els.removeBtn.classList.remove('active-mode');
-    els.removeBtn.innerHTML = "🗑️ Remover Peça";
-    document.body.style.cursor = "default";
+    els.btnRemove.classList.remove('btn-remove-active');
+    els.btnRemove.innerText = "🗑️ Remover";
   }
 }
 
 function startTimer() {
   clearInterval(state.timerInterval);
   state.timerInterval = setInterval(() => {
-    state.timeLeft--;
+    state.timer--;
     updateTimerDisplay();
-    if(state.timeLeft <= 0) {
+    if(state.timer <= 0) {
       clearInterval(state.timerInterval);
-      showGameOver();
+      showFail();
     }
   }, 1000);
 }
 
 function updateTimerDisplay() {
-  const m = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
-  const s = (state.timeLeft % 60).toString().padStart(2, '0');
-  els.timer.textContent = `${m}:${s}`;
-  if(state.timeLeft < 10) els.timer.classList.add('urgent');
-  else els.timer.classList.remove('urgent');
+  const m = Math.floor(state.timer / 60).toString().padStart(2,'0');
+  const s = (state.timer % 60).toString().padStart(2,'0');
+  els.timer.innerText = `${m}:${s}`;
+  if(state.timer < 10) els.timer.style.color = 'red';
+  else els.timer.style.color = 'var(--c-primary)';
 }
 
 function checkWinCondition() {
-  if (state.placedCount !== 16) return;
+  let allCorrect = true;
+  for (let i = 0; i < 16; i++) {
+      if (state.boardSlots[i] !== i) { allCorrect = false; break; }
+  }
   
-  // Pausa e pergunta
-  clearInterval(state.timerInterval);
-  triggerQuiz("Quem é esta Lenda?");
+  if (allCorrect) {
+      clearInterval(state.timerInterval);
+      els.modal.classList.add('active');
+      els.quizTitle.innerText = "Quem é esta Lenda?";
+      els.quizHint.innerText = `Dica: ${state.personality.dica}`;
+      generateQuizOptions();
+  }
 }
 
-function triggerQuiz(title) {
-  els.modal.classList.add('active');
-  document.getElementById('quiz-title').textContent = title;
-  document.getElementById('quiz-context').textContent = `Dica: ${state.personality.dica}`;
-  generateOptions();
-}
-
-function generateOptions() {
-  els.options.innerHTML = '';
+function generateQuizOptions() {
+  els.quizOptions.innerHTML = '';
   const correct = state.personality.nome;
-  let pool = personalities.filter(p => p.nome !== correct).map(p => p.nome);
-  pool = pool.sort(() => 0.5 - Math.random()).slice(0, 3);
-  pool.push(correct);
-  pool.sort(() => 0.5 - Math.random());
+  let others = personalities.filter(p => p.nome !== correct).map(p => p.nome);
+  others.sort(() => Math.random() - 0.5);
+  let options = others.slice(0, 3);
+  options.push(correct);
+  options.sort(() => Math.random() - 0.5);
   
-  pool.forEach(name => {
+  options.forEach(opt => {
     const btn = document.createElement('button');
-    btn.className = 'option-btn';
-    btn.textContent = name;
-    btn.onclick = () => handleAnswer(btn, name === correct);
-    els.options.appendChild(btn);
+    btn.className = 'quiz-option w-100 mb-2 rounded';
+    btn.innerText = opt;
+    btn.onclick = () => handleAnswer(btn, opt === correct);
+    els.quizOptions.appendChild(btn);
   });
 }
 
 function handleAnswer(btn, isCorrect) {
-  const opts = document.querySelectorAll('.option-btn');
-  opts.forEach(b => b.disabled = true);
+  const all = els.quizOptions.querySelectorAll('button');
+  all.forEach(b => b.disabled = true);
   
-  if (isCorrect) {
-    btn.classList.add('correct');
+  if(isCorrect) {
+    btn.classList.remove('btn-outline-dark');
+    btn.classList.add('btn-success');
     setTimeout(() => {
       els.modal.classList.remove('active');
-      showVictory(); // VENCEU!
+      showVictory();
     }, 1000);
   } else {
-    btn.classList.add('wrong');
-    // Punição
-    const placedIndices = state.board.map((pid, idx) => pid !== null ? idx : -1).filter(i => i !== -1);
-    if (placedIndices.length > 0) {
-        const randomIdx = placedIndices[Math.floor(Math.random() * placedIndices.length)];
-        removePieceFromBoard(state.board[randomIdx]);
+    btn.classList.remove('btn-outline-dark');
+    btn.classList.add('btn-danger');
+    const filled = state.boardSlots.map((v,i)=>v!==null?i:-1).filter(i=>i!==-1);
+    if(filled.length > 0) {
+      const rnd = filled[Math.floor(Math.random()*filled.length)];
+      state.boardSlots[rnd] = null;
+      renderAll();
     }
     setTimeout(() => {
       els.modal.classList.remove('active');
-      startTimer(); // VOLTA AO JOGO
-    }, 1500);
+      startTimer();
+    }, 1000);
   }
 }
 
 function showVictory() {
-  els.resultTitle.textContent = "História Revelada!";
-  els.finalImg.src = state.personality.imagem;
-  els.finalName.textContent = state.personality.nome;
-  els.finalBio.textContent = state.personality.bio;
-  switchScreen('victory');
+  els.endTitle.innerText = "História Revelada!";
+  els.endTitle.className = "game-title text-success";
+  fillEndScreen();
+  goToScreen('victory');
 }
 
-// NOVA FUNÇÃO: Revela a lenda mesmo se perdeu
 function showReveal() {
-  els.resultTitle.textContent = "Esta era a Lenda";
-  els.finalImg.src = state.personality.imagem;
-  els.finalName.textContent = state.personality.nome;
-  els.finalBio.textContent = state.personality.bio;
-  switchScreen('victory');
+  els.endTitle.innerText = "Esta era a Lenda";
+  els.endTitle.className = "game-title text-muted";
+  fillEndScreen();
+  goToScreen('victory');
 }
 
-function showGameOver() {
-  switchScreen('fail');
+function fillEndScreen() {
+  els.endImg.src = state.personality.imagem;
+  els.endName.innerText = state.personality.nome;
+  els.endBio.innerText = state.personality.bio;
 }
+
+function showFail() { goToScreen('fail'); }
 
 function toggleMusic() {
-  if(state.audioPlaying) {
-    els.bgMusic.pause();
-    state.audioPlaying = false;
-    document.getElementById('btn-music').textContent = "🎵";
+  if(state.musicPlaying) {
+    els.audio.pause(); state.musicPlaying = false;
+    document.getElementById('btn-music').innerText = "🎵";
   } else {
-    els.bgMusic.play();
-    state.audioPlaying = true;
-    document.getElementById('btn-music').textContent = "🔇";
+    els.audio.play(); state.musicPlaying = true;
+    document.getElementById('btn-music').innerText = "🔇";
   }
 }

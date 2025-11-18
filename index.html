@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lendas da História: Quebra-Cabeça</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Lendas da História</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -13,83 +15,103 @@
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="main-container">
-    
-    <section id="home-screen" class="screen active">
-      <div class="content-box">
-        <h1 class="game-title">Lendas da História</h1>
-        <div class="info-panel">
-          <h3>Objetivo</h3>
-          <p>Reconstrua a imagem de uma grande personalidade negra da história.</p>
-          <h3>Regras</h3>
-          <ul class="rules-list">
-            <li>Complete o quebra-cabeça antes do tempo acabar.</li>
-            <li>Ao final, acerte o nome da personalidade para vencer.</li>
-            <li><strong>Cuidado:</strong> Se errar a pergunta, você perde uma peça!</li>
-          </ul>
-        </div>
-        <button class="btn-primary" id="btn-start">Iniciar Jornada</button>
-      </div>
-    </section>
+  <div class="main-wrapper d-flex justify-content-center align-items-center">
 
-    <section id="game-screen" class="screen">
-      <header class="game-header">
-        <div class="timer-box" id="timer-display">01:00</div>
-        <div class="controls">
-          <button id="btn-music" class="btn-icon">🎵</button>
-          <button id="btn-remove-mode" class="btn-secondary">🗑️ Remover Peça</button>
-        </div>
-      </header>
-
-      <div class="game-layout">
-        <div class="board-container">
-          <div id="puzzle-board" class="puzzle-board"></div>
-        </div>
-
-        <div class="pieces-panel">
-          <h3>Peças Disponíveis</h3>
-          <div id="pieces-container" class="pieces-container"></div>
-          <div class="pieces-status">Montadas: <span id="score-count">0</span>/16</div>
-        </div>
-      </div>
-
-      <div id="quiz-modal" class="modal">
-        <div class="modal-content">
-          <h2 id="quiz-title">Quem é esta Lenda?</h2>
-          <p class="context-text" id="quiz-context">Dica...</p>
-          <div id="quiz-options" class="options-grid"></div>
+    <section id="home-screen" class="game-screen active">
+      <div class="card content-card text-center fade-in">
+        <div class="card-body p-4 p-md-5">
+          <h1 class="game-title text-primary-c">Lendas da História</h1>
+          <div class="rules-box text-start my-4 p-3">
+            <h5>Objetivo</h5>
+            <p class="mb-2">Monte o retrato histórico antes do tempo acabar.</p>
+            <h5>Regras</h5>
+            <ul class="small mb-0">
+              <li>Clique na peça e depois no lugar para mover.</li>
+              <li>A cada peça colocada, você descobre um fato histórico.</li>
+              <li>O encaixe deve ser exato (ID da peça = ID do slot).</li>
+              <li>Errar a pergunta final remove uma peça.</li>
+            </ul>
+          </div>
+          <button id="btn-start" class="btn btn-lg btn-wood w-100">Iniciar Jornada</button>
         </div>
       </div>
     </section>
 
-    <section id="victory-screen" class="screen">
-      <div class="content-box victory-box">
-        <h1 class="victory-title" id="result-title">História Revelada!</h1>
+    <section id="game-screen" class="game-screen">
+      <div class="container-fluid" style="max-width: 1000px;">
         
-        <div class="victory-image-wrapper">
-          <img id="final-image" src="" alt="Personalidade">
+        <div class="game-header d-flex justify-content-between align-items-center mb-3 px-4 py-2">
+          <div id="timer-display" class="timer fs-3 fw-bold text-primary-c">01:30</div>
+          <div class="actions">
+            <button id="btn-music" class="btn btn-sm btn-outline-brown me-2">🎵</button>
+            <button id="btn-remove" class="btn btn-sm btn-wood-light">🗑️ Remover</button>
+          </div>
         </div>
-        
-        <h2 id="victory-name">Nome da Personalidade</h2>
-        <p id="victory-bio" class="bio-text">Biografia...</p>
-        
-        <div class="victory-actions">
-          <button class="btn-secondary" onclick="location.reload()">Menu Inicial</button>
-          <button class="btn-primary" id="btn-replay-win">Jogar Novamente</button>
-        </div>
-      </div>
-    </section>
 
-    <section id="game-over-screen" class="screen">
-      <div class="content-box fail-box">
-        <h1 class="fail-title">O Tempo Esgotou!</h1>
-        <p style="margin-bottom: 20px;">A história não pôde ser completada a tempo.</p>
-        
-        <div class="victory-actions" style="flex-wrap: wrap;">
-          <button class="btn-secondary" id="btn-reveal-fail" style="width: 100%; margin-bottom: 10px; border-color: var(--primary);">👁️ Ver Quem Era</button>
+        <div class="row g-4">
           
-          <button class="btn-secondary" onclick="location.reload()">Menu</button>
-          <button class="btn-primary" id="btn-replay-fail">Tentar Novamente</button>
+          <div class="col-12 col-lg-auto d-flex flex-column align-items-center">
+            <div class="board-frame mb-3">
+              <div id="puzzle-board" class="puzzle-board"></div>
+            </div>
+            
+            <div class="fact-box fade-in" id="fact-display">
+              <span class="fact-icon">💡</span>
+              <p id="fact-text" class="m-0">Encaixe uma peça para descobrir um fato histórico...</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg">
+            <div class="pieces-box h-100 d-flex flex-column">
+              <h5 class="text-center text-primary-c py-2 font-cinzel m-0">Peças Disponíveis</h5>
+              <div id="pieces-container" class="pieces-grid flex-grow-1"></div>
+              <div class="text-center text-muted py-2 small">
+                Peças encaixadas: <span id="placed-count">0</span>/16
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div id="quiz-modal" class="custom-overlay">
+        <div class="overlay-card card p-4 text-center">
+          <h2 class="font-cinzel text-primary-c mb-3" id="quiz-title">Quem é esta Lenda?</h2>
+          <p class="fst-italic mb-4" id="quiz-hint">Dica...</p>
+          <div id="quiz-options" class="d-grid gap-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="victory-screen" class="game-screen">
+      <div class="card content-card text-center fade-in">
+        <div class="card-body p-5">
+          <h1 class="game-title text-success" id="end-title">História Revelada!</h1>
+          <div class="final-image-frame mx-auto my-3">
+            <img id="final-image" src="" class="img-fluid" alt="Lenda">
+          </div>
+          <h2 id="final-name" class="font-cinzel text-primary-c">Nome</h2>
+          <p id="final-bio" class="text-muted">Bio...</p>
+          <div class="d-flex gap-2 justify-content-center mt-4">
+            <button class="btn btn-wood-light" onclick="location.reload()">Menu</button>
+            <button id="btn-replay" class="btn btn-wood">Jogar Novamente</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fail-screen" class="game-screen">
+      <div class="card content-card text-center fade-in border-danger">
+        <div class="card-body p-5">
+          <h1 class="game-title text-danger">O Tempo Esgotou!</h1>
+          <p class="lead mb-4">A história não pôde ser completada a tempo.</p>
+          <div class="d-grid gap-2 col-md-8 mx-auto">
+            <button id="btn-reveal" class="btn btn-outline-dark">👁️ Ver Quem Era</button>
+            <div class="d-flex gap-2 mt-2">
+              <button class="btn btn-wood-light w-50" onclick="location.reload()">Menu</button>
+              <button id="btn-retry" class="btn btn-wood w-50">Tentar de Novo</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
