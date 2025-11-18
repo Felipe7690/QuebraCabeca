@@ -1,4 +1,3 @@
-
 const personalities = [
   {
     nome: "Abdias do Nascimento",
@@ -285,11 +284,16 @@ function generatePiecesData(imgSrc) {
       if(c > 0) shape.left = -shapes[r*4 + (c-1)].right;
       shapes.push(shape);
       
-      state.pieces.push({ id: r*4 + c, r, c, shape, imgSrc });
+      state.pieces.push({
+        id: r*4 + c,
+        r, c,
+        shape,
+        imgSrc,
+        shuffleOrder: Math.random() 
+      });
     }
   }
   
-  // Ajuda inicial
   const starter = Math.floor(Math.random() * 16);
   state.boardSlots[starter] = starter;
   updateFact();
@@ -303,7 +307,6 @@ function updateFact() {
   void els.factBox.offsetWidth;
   els.factBox.classList.add('fact-animation');
 }
-
 
 function renderAll() {
   els.board.innerHTML = '';
@@ -344,6 +347,9 @@ function renderAll() {
   }
   
   const availablePieces = state.pieces.filter(p => !state.boardSlots.includes(p.id));
+  
+  availablePieces.sort((a, b) => a.shuffleOrder - b.shuffleOrder);
+  
   availablePieces.forEach(p => {
     const pieceEl = createPieceElement(p.id);
     pieceEl.onclick = (e) => {
@@ -436,9 +442,7 @@ function handleDrop(e, idx) {
   if(!isNaN(id)) movePieceToSlot(id, idx);
 }
 
-
 function movePieceToSlot(pieceId, targetIdx) {
-
   if (pieceId !== targetIdx) {
     const selectedEl = document.querySelector('.puzzle-piece.selected');
     if(selectedEl) {
@@ -455,7 +459,7 @@ function movePieceToSlot(pieceId, targetIdx) {
   
   state.boardSlots[targetIdx] = pieceId;
   state.selectedPieceId = null;
-  updateFact(); // Mostra fato novo
+  updateFact();
   renderAll();
 }
 
